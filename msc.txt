@@ -1,0 +1,29 @@
+for i in `cat url.txt`;do wget "$i";done
+rclone sync . go:`basename $(pwd)`
+find -name '*.zip' -exec sh -c 'unzip -d "${1%.*}" "$1"' _ {} \;
+
+
+find -name '*.zip' -exec sh -c './dl.sh $1' _ {} \;
+
+
+for i in `cat url.txt`;do ./dl.sh "$i";done
+
+
+@ECHO OFF
+
+rem DOSKEY cd=cd $1$T
+dir
+ rem REG add "HKLM\Software\Microsoft\command processor" /v AutoRun /t reg_expand_sz /d "F:\\.alias.cmd"
+
+DOSKEY pi=pip3 install $*
+
+DOSKEY st=speed-test
+
+DOSKEY gw=ping 192.168.43.1
+
+ECHO Loaded Aliases!
+
+ECHO ====================
+
+
+jarsigner -sigalg SHA1withRSA -digestalg SHA1 -tsa http://timestamp.digicert.com -storepass qwerty -keystore objection.jks pko.apk objection
